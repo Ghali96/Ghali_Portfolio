@@ -1,13 +1,30 @@
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
 :root {
     --primary-color: #1a1a1a;
     --secondary-color: #333333;
-    --accent-color: #FFD700;
-    --accent-color-light: #FFE55C;
+    --accent-color: #1B4D3E;
+    --accent-color-light: #2E8B57;
     --background-color: #ffffff;
     --text-color: #1a1a1a;
     --border-color: #e5e7eb;
-    --hover-color: #FFB700;
-    --gradient-yellow: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-light) 100%);
+    --hover-color: #2E8B57;
+    --gradient-green: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-light) 100%);
 }
 
 /* Yellow Accents */
@@ -22,13 +39,20 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 229, 92, 0.05) 100%);
+    background: linear-gradient(45deg, rgba(27, 77, 62, 0.05) 0%, rgba(46, 139, 87, 0.05) 100%);
     z-index: -1;
+    animation: gradientFlow 8s ease infinite;
+    background-size: 200% 200%;
+}
+
+.experience-card {
+    transition: all 0.3s ease;
 }
 
 .experience-card:hover {
     border-color: var(--accent-color);
-    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.1);
+    box-shadow: 0 8px 15px rgba(27, 77, 62, 0.15);
+    transform: translateY(-5px) scale(1.02);
 }
 
 .card-header i {
@@ -147,8 +171,16 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent-color-light) 25%, 
+        var(--accent-color) 50%,
+        var(--accent-color-light) 75%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
 }
 
 .section h2 {
@@ -156,15 +188,21 @@ body {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(120deg, var(--accent-color), var(--accent-color-light));
+    background: linear-gradient(120deg, var(--accent-color), var(--accent-color-light), var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
-    animation: gradientFlow 3s ease infinite;
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
     position: relative;
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+.section h2:hover {
+    transform: translateX(-50%) scale(1.05);
+    letter-spacing: 1px;
 }
 
 .section h2::after {
@@ -232,7 +270,8 @@ nav {
 
 .nav-links a:hover {
     color: var(--accent-color);
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(30, 77, 62, 0.1);
+    transform: translateY(-2px);
 }
 
 .nav-links a:hover::after {
@@ -313,10 +352,11 @@ nav {
     left: -10px;
     right: -10px;
     bottom: -10px;
-    background: linear-gradient(45deg, var(--accent-color), var(--accent-color-light));
+    background: linear-gradient(45deg, var(--accent-color), var(--accent-color-light), var(--accent-color));
     border-radius: 50%;
     z-index: -1;
-    animation: rotate 4s linear infinite;
+    animation: rotate 4s linear infinite, pulse 2s ease-in-out infinite;
+    background-size: 200% 200%;
 }
 
 .profile-image::after {
