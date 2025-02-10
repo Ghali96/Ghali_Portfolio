@@ -35,3 +35,4 @@ A modern, responsive portfolio website showcasing my professional experience and
 
 © 2025 Ghali Harti. All rights reserved.
 # Ghali_Portfolio
+# Ghali_Portfolio
